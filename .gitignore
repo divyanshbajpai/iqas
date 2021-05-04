@@ -128,7 +128,10 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2b5d6d65f642d8a913c0d8b1526e70a908a22a4c
 ### IntelliJ IDEA ###
 .idea
 *.iws
