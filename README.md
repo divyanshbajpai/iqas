@@ -20,4 +20,4 @@ docker run -d -p 27017:27017 --name iqas-mongo -e MONGO_INITDB_ROOT_USERNAME=mon
 - New Project -> Existing Maven Project from VCS -> point to this repo
 - Assuming the above steps works
 - Maven dependency installation will start in backgroud, might take a while
-- NaviRun as 'ServerApplication.java' and run as 'spring application'
+- Navigate to 'ServerApplication.java' and run as 'spring application'
