@@ -2,5 +2,6 @@ site_name: Sample Docs
 nav:
     - Home: index.md
     - About: about.md
+    - "API Docs": ./swagger
 docs_dir: documentation
 site_dir: docs
