@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "build:docs": "mkdocs build && cp -r swagger docs/swagger"
+  }
+}

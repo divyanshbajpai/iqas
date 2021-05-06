@@ -1,0 +1,209 @@
+swagger: "2.0"
+info:
+  description: "iqas - Intelligent Question Answering System"
+  version: "1.0.0"
+  title: "Intelligent Question Answering System"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "divyanshbajpai11@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:5000"
+basePath: "/"
+tags:
+- name: "Knowledge Base"
+  description: "Access to knowlegde base"
+- name: "Answer Retreival"
+  description: "Access to answer retrival"
+schemes:
+- "https"
+- "http"
+paths:
+  /kb:
+    get:
+      tags:
+      - "Knowledge Base"
+      summary: "Get all knowledge bases"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/knowledgeBase"
+        "400":
+          description: "Invalid status value"
+    post:
+      tags:
+      - "Knowledge Base"
+      summary: "Add a new Knowledge Base"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Body object of Knowledge base"
+        required: true
+        schema:
+          $ref: "#/definitions/knowledgeBase"
+      responses:
+        "201":
+          description: "Created"
+      
+  /kb/{id}:
+    put:
+      tags:
+      - "Knowledge Base"
+      summary: "Edit a Knowledge Base by id"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Body of Knowledge source object"
+        required: true
+        schema:
+          $ref: "#/definitions/knowledgeBase"
+      - name: "id"
+        in: "path"
+        description: "KB id to update"
+        required: true
+        type: "string"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "KB not found"
+        "405":
+          description: "Validation exception"
+    delete:
+      tags:
+      - "Knowledge Base"
+      summary: "Deletes a Knowledge Base"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "KbId to delete"
+        required: true
+        type: "string"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "KB not found"
+      
+  /kb/{kbId}/doc/:
+    post:
+      tags:
+      - "Knowledge Base"
+      summary: "Add document to a Knowledge Base"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Document object"
+        required: true
+        schema:
+          $ref: "#/definitions/document"
+      - name: "kbId"
+        in: "path"
+        description: "kbId where doc should be added to"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/document"
+        "400":
+          description: "Invalid status value"
+  /kb/{kbId}/doc/{docId}:  
+    delete:
+      tags:
+      - "Knowledge Base"
+      summary: "Delete doc from a knowledge base"
+      produces:
+      - "application/json"
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "kbId"
+        in: "path"
+        description: "kbId where doc belongs"
+        required: true
+        type: "string"
+      - name: "docId"
+        in: "path"
+        description: "docId to be deleted"
+        required: true
+        type: "string"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "KB not found"
+  /ar/kb/{kbId}:
+    post:
+      tags:
+      - "Answer Retreival"
+      summary: "Post Question"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "question"
+        in: "body"
+        description: "Question to be answered"
+        required: true
+        schema:
+          type: "string"
+      - name: "kbId"
+        in: "path"
+        description: "kb to be answered"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "string"
+        "400":
+          description: "Invalid question value"
+definitions:
+  knowledgeBase:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+  document:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      text:
+        type: "string"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
