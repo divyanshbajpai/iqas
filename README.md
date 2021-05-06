@@ -21,3 +21,10 @@ docker run -d -p 27017:27017 --name iqas-mongo -e MONGO_INITDB_ROOT_USERNAME=mon
 - Assuming the above steps works
 - Maven dependency installation will start in backgroud, might take a while
 - Navigate to 'ServerApplication.java' and run as 'spring application'
+
+## Building documentation
+
+Install `mkdocs`.
+
+Run `npm run build:docs` to build the site and add the swagger spec.
+
