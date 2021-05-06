@@ -1,6 +1,5 @@
 package com.iqas.server.model;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
@@ -8,24 +7,25 @@ import java.util.Date;
 @Document
 public class KbModel {
 
-    private String kbId;
+
+    private Integer kbId;
     private String name;
     private Date creationDate = new Date();
 
     public KbModel() {
     }
 
-    public KbModel(String kbId, String name) {
+    public KbModel(Integer kbId, String name) {
         super();
         this.kbId = kbId;
         this.name = name;
     }
 
-    public String getKbId() {
+    public Integer getKbId() {
         return kbId;
     }
 
-    public void setKbId(String kbId) {
+    public void setKbId(Integer kbId) {
         this.kbId = kbId;
     }
 

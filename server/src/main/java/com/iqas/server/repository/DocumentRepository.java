@@ -1,2 +1,7 @@
-package com.iqas.server.repository;public class DocumentRepository {
+package com.iqas.server.repository;
+
+public class DocumentRepository {
+
+
+
 }
