@@ -1,24 +1,48 @@
 package com.iqas.server.model;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Document
 public class KbModel {
 
-
+    private ObjectId _id;
     private Integer kbId;
     private String name;
+    @Field
+    private List<Integer> docId;
     private Date creationDate = new Date();
 
     public KbModel() {
     }
 
-    public KbModel(Integer kbId, String name) {
+    public KbModel(String name) {
         super();
-        this.kbId = kbId;
         this.name = name;
+        this.docId=new ArrayList();
+    }
+
+    public ObjectId get_id() {
+        return _id;
+    }
+
+    public void set_id(ObjectId _id) {
+        this._id = _id;
+    }
+
+    public List<Integer> getDocId() {
+        return docId;
+    }
+
+    public void setDocId(List<Integer> docId) {
+        this.docId = docId;
     }
 
     public Integer getKbId() {

@@ -13,9 +13,8 @@ public class DocumentModel {
  public DocumentModel() {
  }
 
- public DocumentModel(Integer docId, String name, String text) {
+ public DocumentModel(String name, String text) {
   super();
-  this.docId = docId;
   this.name = name;
   this.text = text;
  }
