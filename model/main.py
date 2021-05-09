@@ -19,9 +19,9 @@ def read_root():
 
 @app.post("/kb/{id}")
 def find_answer(query: Query):
-    document="lorem epsum"
     db=MongoManager.getInstance()
-    #WIP
+    ret_kb=db.kbModel.find_one({'kbId':id}) 
+    docId=ret_kb['docId'][0] # Assuming document with id=1 to be the one containing text
+    ret_doc=db.documentModel.find_one({'docId':docId})
+    document=ret_doc['text']
     return get_answer(document,query.question)
-
-
