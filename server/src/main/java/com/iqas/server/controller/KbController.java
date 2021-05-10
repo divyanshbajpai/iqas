@@ -1,12 +1,11 @@
 package com.iqas.server.controller;
 
+import com.iqas.server.model.DocumentModel;
 import com.iqas.server.model.KbModel;
+import com.iqas.server.service.DocumentService;
 import com.iqas.server.service.KbService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,6 +14,9 @@ public class KbController {
 
     @Autowired
     private KbService kbService;
+
+    @Autowired
+    private DocumentService documentService;
 
     @RequestMapping("/hello")
     public String hello(){
@@ -29,5 +31,10 @@ public class KbController {
     @RequestMapping(value = "/api/kb",method = RequestMethod.POST)
     public KbModel postKb(@RequestBody KbModel kbModel){
         return kbService.addKb(kbModel);
+    }
+
+    @RequestMapping(value = "/api/kb/{id}/doc",method = RequestMethod.POST)
+    public DocumentModel postDoc(@RequestBody DocumentModel documentModel, @PathVariable("id") Integer id){
+        return documentService.addDocument(documentModel, id);
     }
 }
