@@ -18,7 +18,7 @@ def read_root():
 
 
 @app.post("/kb/{id}")
-def find_answer(query: Query):
+def find_answer(id: int, query: Query):
     db=MongoManager.getInstance()
     ret_kb=db.kbModel.find_one({'kbId':id}) 
     docId=ret_kb['docId'][0] # Assuming document with id=1 to be the one containing text
