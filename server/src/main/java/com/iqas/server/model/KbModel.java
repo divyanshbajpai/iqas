@@ -29,7 +29,7 @@ public class KbModel {
         this.docId=new ArrayList();
     }
 
-    public ObjectId get_id() {
+    public ObjectId getId() {
         return _id;
     }
 
