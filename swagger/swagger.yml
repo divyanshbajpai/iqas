@@ -10,7 +10,7 @@ info:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
 host: "localhost:5000"
-basePath: "/"
+basePath: "/api"
 tags:
 - name: "Knowledge Base"
   description: "Access to knowlegde base"
@@ -101,7 +101,6 @@ paths:
           description: "Invalid ID supplied"
         "404":
           description: "KB not found"
-      
   /kb/{kbId}/doc/:
     post:
       tags:
