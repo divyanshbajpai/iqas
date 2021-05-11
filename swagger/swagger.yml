@@ -131,7 +131,33 @@ paths:
               $ref: "#/definitions/document"
         "400":
           description: "Invalid status value"
-  /kb/{kbId}/doc/{docId}:  
+  /kb/{kbId}/doc/{docId}:
+    get:
+      tags:
+      - "Knowledge Base"
+      summary: "Get Document by id"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "kbId"
+        description: "Knowledge base Id"
+        required: true
+        type: "string"
+      - name: "docId"
+        in: "path"
+        description: "Document id to be fetched"
+        required: true
+        type: "string"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "KB not found"
+        "405":
+          description: "Validation exception"
     delete:
       tags:
       - "Knowledge Base"
