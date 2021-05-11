@@ -28,3 +28,10 @@ Install `mkdocs`.
 
 Run `npm run build:docs` to build the site and add the swagger spec.
 
+### Model
+
+- Go into the `model` directory
+- Create and activate a Python virtual environment (optional but recommended)
+- Install dependencies: `pip install -r requirements.txt`
+- Go into the `server` directory and run `uvicorn main:app --reload`
+
